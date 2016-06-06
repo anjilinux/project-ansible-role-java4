@@ -1,0 +1,29 @@
+---
+
+- name: Add Oracle Java APT Repository
+  apt_repository:
+    repo: "{{ java_debian_oracle_repo }}"
+    state: present
+  when:
+    java_debain_oracle_accept_licence
+
+- name: Accept Oracle Java License
+  debconf:
+    name: "{{ java_debian_oracle_packages[java_version][0] }}"
+    question: shared/accepted-oracle-license-v1-1
+    vtype: select
+    # Be careful this needs to be a string, not boolean, otherwise Python will
+    # capitalise it and debconf won't allow the package to be installed
+    value: "true"
+  when:
+    java_debain_oracle_accept_licence
+
+- name: Install Oracle Java
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    "{{ java_debian_oracle_packages[java_version] }}"
+  when:
+    java_debain_oracle_accept_licence

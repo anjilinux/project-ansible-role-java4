@@ -1,0 +1,8 @@
+---
+
+- name: Install OpenJDK Java
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    "{{ java_redhat_openjdk_packages[java_version] }}"

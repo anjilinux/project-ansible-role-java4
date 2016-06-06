@@ -1,0 +1,9 @@
+---
+
+- include: debian-openjdk.yml
+  when:
+    java_type == 'openjdk'
+
+- include: debian-oracle.yml
+  when:
+    java_type == 'oracle'

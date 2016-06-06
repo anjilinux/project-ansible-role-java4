@@ -1,0 +1,9 @@
+---
+
+- include: redhat-openjdk.yml
+  when:
+    java_type == 'openjdk'
+
+- include: redhat-oracle.yml
+  when:
+    java_type == 'oracle'
