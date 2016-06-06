@@ -1,0 +1,11 @@
+---
+
+- name: Install Oracle Java 1.8
+  hosts: all
+  become: true
+  roles:
+    - ansible-roles-java
+  vars:
+    java_type: oracle
+    java_version: 8
+    java_debain_oracle_accept_licence: yes

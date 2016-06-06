@@ -1,0 +1,11 @@
+---
+
+- name: Install OpenJDK 1.7
+  hosts: all
+  become: true
+  roles:
+    - ansible-roles-java
+  vars:
+    java_type: openjdk
+    java_version: 7
+    java_debain_oracle_accept_licence: no

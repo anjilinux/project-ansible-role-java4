@@ -1,0 +1,118 @@
+---
+platforms:
+  - name: ubuntu-14.04
+    transport:
+      username: ubuntu
+    tags:
+      - Name: anisble-test-kitchen-role-java-ubuntu-1404
+  - name: ubuntu-16.04
+    transport:
+      username: ubuntu
+    tags:
+      - Name: anisble-test-kitchen-role-java-ubuntu-1604
+  - name: centos-6
+    transport:
+      username: centos
+    # Ruby 2.0 is installed in custom location. Override
+    # these calls to ensure that serverspec can be installed
+    # and run on the machine (otherwise it won't be found)
+    verifier:
+      bundler_path: /opt/rh/ruby200/root/usr/local/bin
+      rspec_path: /opt/rh/ruby200/root/usr/local/bin
+    tags:
+      - Name: centos-7-test-kitchen-users
+  - name: centos-7
+    transport:
+      username: centos
+    # Ruby 2.0 is installed in custom location. Override
+    # these calls to ensure that serverspec can be installed
+    # and run on the machine (otherwise it won't be found)
+    verifier:
+      bundler_path: /opt/rh/ruby200/root/usr/local/bin
+      rspec_path: /opt/rh/ruby200/root/usr/local/bin
+    tags:
+      - Name: centos-7-test-kitchen-users
+
+# NOTE: This is broken at the moment as it requires two
+#       converge runs before Ansible will be installed.
+#
+# - name: debian-8
+#   transport:
+#     username: admin
+#   # Only 1.7.2 is installed by default. Use source method
+#   # to pull down Ansible 2.0
+#   provisioner:
+#     require_ansible_source: true
+#     ansible_source_rev: stable-2.0
+#   tags:
+#     - Name: anisble-test-kitchen-role-java-debian-8
+
+suites:
+  - name: openjdk6
+    # OpenJDK 1.6 is not supported on Ubuntu 16.04 Xenial Xerus
+    excludes:
+      - ubuntu-16.04
+    verifier:
+      patterns:
+        - "roles/*/test/integration/openjdk6/serverspec/*_spec.rb"
+  - name: openjdk7
+    # OpenJDK 1.7 is not supported on Ubuntu 16.04 Xenial Xerus
+    excludes:
+      - ubuntu-16.04
+    verifier:
+      patterns:
+        - "roles/*/test/integration/openjdk7/serverspec/*_spec.rb"
+  - name: openjdk8
+    # OpenJDK 1.8 is not supported on Ubuntu 14.04 Trusty Tahr
+    excludes:
+      - ubuntu-14.04
+    verifier:
+      patterns:
+        - "roles/*/test/integration/openjdk8/serverspec/*_spec.rb"
+  - name: openjdk9
+    # Currently a packaging error in 16.06 /w jawt_md.h, so that is excluded too
+    # OpenJDK 1.9 is not supported on Ubuntu 14.04 Trusty Tahr
+    # OpenJDK 1.9 is not supported on CentOS 6
+    # OpenJDK 1.9 is not supported on CentOS 7
+    excludes:
+      - ubuntu-14.04
+      - ubuntu-16.04
+      - centos-6
+      - centos-7
+    verifier:
+      patterns:
+        - "roles/*/test/integration/openjdk9/serverspec/*_spec.rb"
+  - name: oracle7
+    # Oracle Java is not installable on CentOS 6/7 with this role
+    excludes:
+      - centos-6
+      - centos-7
+    verifier:
+      patterns:
+        - "roles/*/test/integration/oracle7/serverspec/*_spec.rb"
+  - name: oracle8
+    # Oracle Java is not installable on CentOS 6/7 with this role
+    excludes:
+      - centos-6
+      - centos-7
+    verifier:
+      patterns:
+        - "roles/*/test/integration/oracle8/serverspec/*_spec.rb"
+  - name: oracle9
+    # Oracle Java is not installable on CentOS 6/7 with this role
+    excludes:
+      - centos-6
+      - centos-7
+    verifier:
+      patterns:
+        - "roles/*/test/integration/oracle9/serverspec/*_spec.rb"
+
+provisioner:
+  name: ansible_playbook
+  hosts: all
+  require_chef_for_busser: false
+  require_ruby_for_busser: true
+
+verifier:
+  name: serverspec
+  sudo_path: true
