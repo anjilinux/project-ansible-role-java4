@@ -1,11 +1,11 @@
 ---
 # defaults file for java
 
-# Can be oracle or openjdk [default]
+# Can be "oracle" or "openjdk" [default]
 java_type: openjdk
-# The version Java to be installed
+# The version of Java to be installed
 java_version: 8
 
 # By default we don't accept the licence. Set to yes in your group_vars or
-# host_vars files to install (if selected)
+# host_vars files to install (if "oracle" is set for java_type)
 java_debain_oracle_accept_licence: no
