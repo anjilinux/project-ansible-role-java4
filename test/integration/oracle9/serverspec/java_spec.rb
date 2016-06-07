@@ -23,5 +23,5 @@ describe command('/usr/bin/java -version') do
   let(:disable_sudo) { true }
   its(:stderr) { should match /Java HotSpot\(TM\) 64-Bit Server/ }
   its(:stderr) { should match /build 9-/ }
-  its(:stderr) { should_not /OpenJDK/ }
+  its(:stderr) { should_not match /OpenJDK/ }
 end
