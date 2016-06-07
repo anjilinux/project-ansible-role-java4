@@ -1,6 +1,15 @@
 ---
 # tasks file for java
 
+- name: Java Version Check
+  fail:
+    msg: "Invalid version for Java: {{ java_version }}"
+  when:
+    (java_type == 'openjdk' and
+     java_debian_openjdk_packages[java_version] is undefined) or
+    (java_type == 'oracle' and
+     java_debian_oracle_packages[java_version] is undefined)
+     
 - include: debian.yml
   when:
     ansible_distribution == 'Debian' or
