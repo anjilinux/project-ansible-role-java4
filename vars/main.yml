@@ -1,6 +1,10 @@
 ---
 # vars file for java
 
+# These are the hashes which store what packages need to be installed for which
+# version and distribution of Linux. There shouldn't be a need to override these
+# values in normal operation.
+
 java_debian_openjdk_packages:
   6:
     - openjdk-6-jdk
