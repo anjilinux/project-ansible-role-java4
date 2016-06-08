@@ -1,2 +1,49 @@
 ---
 # vars file for java
+
+# These are the hashes which store what packages need to be installed for which
+# version and distribution of Linux. There shouldn't be a need to override these
+# values in normal operation.
+
+java_debian_openjdk_packages:
+  6:
+    - openjdk-6-jdk
+    - ca-certificates
+  7:
+    - openjdk-7-jdk
+    - ca-certificates
+  8:
+    - openjdk-8-jdk
+    - ca-certificates
+  9:
+    - openjdk-9-jdk
+    - ca-certificates
+
+java_redhat_openjdk_packages:
+  6:
+    - java-1.6.0-openjdk
+    - ca-certificates
+  7:
+    - java-1.7.0-openjdk
+    - ca-certificates
+  8:
+    - java-1.8.0-openjdk
+    - ca-certificates
+  9:
+    - java-1.9.0-openjdk
+    - ca-certificates
+
+java_debian_oracle_repo: ppa:webupd8team/java
+java_debian_oracle_packages:
+  7:
+    - oracle-java7-installer
+    - ca-certificates
+    - oracle-java7-set-default
+  8:
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default
+  9:
+    - oracle-java9-installer
+    - ca-certificates
+    - oracle-java9-set-default
