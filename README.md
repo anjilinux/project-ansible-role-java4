@@ -13,7 +13,7 @@ None.
 
 * `java_type`: Can either be `openjdk` or `oracle` to install the selected
   type of Java on the system. *Note*: At this time `oracle` is only supported
-  on `Ubuntu` or `Debian` systems.
+  on Ubuntu or Debian systems.
 * `java_version`: The version of the JDK to install; either `6`, `7`, `8`, or
   `9`. Not all versions are supports on all types for all releases and
   distributions.
@@ -25,7 +25,7 @@ None.
 
 ## Example Playbook
 
-Here are some examples on how to use the role:
+Here are some examples on how to use this role:
 
 ```yaml
 - hosts: all
