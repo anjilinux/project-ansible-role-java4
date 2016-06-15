@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Jonathan Wright <jon@than.io>
-  description: Install and configure Oracle or OpenJDK Java
+  description: Install and configure Oracle or OpenJDK Java, with test-kitchen/serverspec tests.
   license: GPLv3
   min_ansible_version: 2.0
   platforms:
