@@ -9,7 +9,7 @@
      java_debian_openjdk_packages[java_version] is undefined) or
     (java_type == 'oracle' and
      java_debian_oracle_packages[java_version] is undefined)
-     
+
 - include: debian.yml
   when:
     ansible_distribution == 'Debian' or
@@ -17,5 +17,5 @@
 
 - include: redhat.yml
   when:
-    ansible_distribution == 'Red Hat Enterprise Linux' or
+    ansible_distribution == 'RedHat' or
     ansible_distribution == 'CentOS'
