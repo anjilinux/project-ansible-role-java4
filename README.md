@@ -46,8 +46,8 @@ Here are some examples on how to use this role:
 
 ## License
 
-GPLv3
+This project is under the *BSD* License. See the `LICENSE` file for the full license text.
 
 ## Author Information
 
-Jonathan Wright <github@jon.than.io>
+Jonathan Wright <jon@than.io>

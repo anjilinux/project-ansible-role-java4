@@ -3,19 +3,26 @@ galaxy_info:
   author: Jonathan Wright <jon@than.io>
   description: Install and configure Oracle or OpenJDK Java, with test-kitchen/serverspec tests.
   issue_tracker_url: https://github.com/jonathanio/ansible-role-java/issues
-  license: GPLv3
+  github_branch: master
+  license: BSD
   min_ansible_version: 2.0
   platforms:
-  - name: Debian
-    versions:
-    - wheezy
-    - jessie
-    - sid
-  - name: Ubuntu
-    versions:
-    - all
-  categories:
-  - packaging
-  - java
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Debian
+      versions:
+        - wheezy
+        - jessie
+        - sid
+    - name: Ubuntu
+      versions:
+        - xenial
+        - trusty
+  galaxy_tags:
+    - system
+    - java
+    - test-kitchen
 
 dependencies: []
