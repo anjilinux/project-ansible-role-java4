@@ -1,5 +1,7 @@
 # Ansible Java
 
+[![Galaxy](http://img.shields.io/badge/galaxy-jonathanio.java-blue.svg?style=flat-square)](https://galaxy.ansible.com/jonathanio/java)
+
 A role to install Java packages. It currently supports:
 
 * OpenJDK on either Ubunu/Debian, or CentOS/RHEL; or
